@@ -111,10 +111,11 @@ export class MediaController {
     if (!name) {
       return false;
     }
+    const publicUrl = process.env.S3_PUBLIC_URL || process.env.CLOUDFLARE_BUCKET_URL || '';
     return this._mediaService.saveFile(
       org.id,
       name,
-      process.env.CLOUDFLARE_BUCKET_URL + '/' + name,
+      `${publicUrl}/${name}`,
       originalName || undefined
     );
   }

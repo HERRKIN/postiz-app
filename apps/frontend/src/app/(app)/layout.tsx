@@ -55,7 +55,7 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
       >
         <VariableContextComponent
           storageProvider={
-            process.env.STORAGE_PROVIDER! as 'local' | 'cloudflare'
+            process.env.STORAGE_PROVIDER! as 'local' | 'cloudflare' | 's3'
           }
           environment={process.env.NODE_ENV!}
           backendUrl={process.env.NEXT_PUBLIC_BACKEND_URL!}
@@ -69,7 +69,9 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
           oauthLogoUrl={process.env.NEXT_PUBLIC_POSTIZ_OAUTH_LOGO_URL!}
           oauthDisplayName={process.env.NEXT_PUBLIC_POSTIZ_OAUTH_DISPLAY_NAME!}
           uploadDirectory={process.env.NEXT_PUBLIC_UPLOAD_STATIC_DIRECTORY!}
-          cloudflareUrl={process.env.CLOUDFLARE_BUCKET_URL || ''}
+          cloudflareUrl={
+            process.env.S3_PUBLIC_URL || process.env.CLOUDFLARE_BUCKET_URL || ''
+          }
           mainUrl={process.env.MAIN_URL || ''}
           mcpUrl={process.env.MCP_URL}
           dub={!!process.env.STRIPE_PUBLISHABLE_KEY}

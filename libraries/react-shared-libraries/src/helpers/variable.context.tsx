@@ -1,6 +1,8 @@
 'use client';
 
 import { createContext, FC, ReactNode, useContext, useEffect } from 'react';
+export type StorageProvider = 'local' | 'cloudflare' | 's3';
+
 interface VariableContextInterface {
   stripeClient: string;
   billingEnabled: boolean;
@@ -13,7 +15,7 @@ interface VariableContextInterface {
   mainUrl: string;
   frontEndUrl: string;
   plontoKey: string;
-  storageProvider: 'local' | 'cloudflare';
+  storageProvider: StorageProvider;
   backendUrl: string;
   environment: string;
   discordUrl: string;

@@ -2,6 +2,6 @@
 
 set -o xtrace
 
-docker rmi localhost/postiz || true
-docker build --target dist -t localhost/postiz -f Dockerfile.dev .
-docker build --target devcontainer -t localhost/postiz-devcontainer -f Dockerfile.dev .
+IMAGE_NAME="${POSTIZ_IMAGE:-postiz-s3:local}"
+
+docker build -t "$IMAGE_NAME" -f Dockerfile.dev .
